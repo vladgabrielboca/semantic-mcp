@@ -1,0 +1,27 @@
+{
+  "teams": [
+    {
+      "id": "1",
+      "name": "FC Barcelona",
+      "league": "La Liga",
+      "founded": 1899
+    }
+  ],
+  "players": [
+    {
+      "id": "1",
+      "teamId": 1,
+      "name": "Lamine Yamal",
+      "position": "Winger",
+      "age": 17
+    },
+    {
+      "name": "Pedri",
+      "position": "Midfielder",
+      "age": 22,
+      "teamId": 1,
+      "id": "SIGdW0x7Q-A"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

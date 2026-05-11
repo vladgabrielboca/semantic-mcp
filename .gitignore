@@ -1,3 +1,8 @@
-echo "node_modules/" > .gitignore
-echo "vendor/" >> .gitignore
-echo "*.env" >> .gitignore
+node_modules/
+vendor/
+*.env
+vendor/
+.env.php
+package-lock.json
+package.json
+composer*.*

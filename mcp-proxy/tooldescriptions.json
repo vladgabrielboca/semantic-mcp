@@ -1,0 +1,167 @@
+[
+  {
+    "name": "getTeamByID",
+    "summary": "Retrieve a football team by its ID.",
+    "description": "Fetches a football team record using its unique integer ID. Use this only when the user explicitly provides a team ID.",
+    "params": [
+      {
+        "name": "id",
+        "summary": "Team ID",
+        "description": "The unique integer identifier of the football team.",
+        "required": true,
+        "schema": { "type": "integer" }
+      }
+    ],
+    "result": {
+      "name": "team",
+      "summary": "Team record",
+      "description": "An object containing the team's details.",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "league": { "type": "string" },
+          "founded": { "type": "integer" }
+        },
+        "required": ["id", "name", "league", "founded"],
+        "additionalProperties": false
+      }
+    },
+    "paramStructure": "by-name",
+    "handler": "obtineEchipa"
+  },
+  {
+    "name": "getTeamsByLeague",
+    "summary": "Retrieve all teams from a specific league.",
+    "description": "Fetches all football teams that belong to a given league name. Use this when the user asks about teams in a specific league or competition.",
+    "params": [
+      {
+        "name": "league",
+        "summary": "League name",
+        "description": "The name of the football league to filter teams by (e.g. 'La Liga', 'Premier League').",
+        "required": true,
+        "schema": { "type": "string" }
+      }
+    ],
+    "result": {
+      "name": "teams",
+      "summary": "List of teams",
+      "description": "An array of team objects matching the given league.",
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "integer" },
+            "name": { "type": "string" },
+            "league": { "type": "string" },
+            "founded": { "type": "integer" }
+          }
+        }
+      }
+    },
+    "paramStructure": "by-name",
+    "handler": "obtineEchipeLeague"
+  },
+  {
+    "name": "getPlayerByID",
+    "summary": "Retrieve a football player by their ID.",
+    "description": "Fetches a football player record using their unique integer ID. Use this only when the user explicitly provides a player ID.",
+    "params": [
+      {
+        "name": "id",
+        "summary": "Player ID",
+        "description": "The unique integer identifier of the football player.",
+        "required": true,
+        "schema": { "type": "integer" }
+      }
+    ],
+    "result": {
+      "name": "player",
+      "summary": "Player record",
+      "description": "An object containing the player's details.",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "position": { "type": "string" },
+          "age": { "type": "integer" },
+          "teamId": { "type": "integer" }
+        },
+        "required": ["id", "name", "position", "age", "teamId"],
+        "additionalProperties": false
+      }
+    },
+    "paramStructure": "by-name",
+    "handler": "obtineJucator"
+  },
+  {
+    "name": "getPlayersByTeamID",
+    "summary": "Retrieve all players from a specific team.",
+    "description": "Fetches all football players that belong to a given team ID. Use this when the user asks about the squad or players of a team.",
+    "params": [
+      {
+        "name": "teamId",
+        "summary": "Team ID",
+        "description": "The unique integer identifier of the team whose players should be retrieved.",
+        "required": true,
+        "schema": { "type": "integer" }
+      }
+    ],
+    "result": {
+      "name": "players",
+      "summary": "List of players",
+      "description": "An array of player objects belonging to the given team.",
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "integer" },
+            "name": { "type": "string" },
+            "position": { "type": "string" },
+            "age": { "type": "integer" },
+            "teamId": { "type": "integer" }
+          }
+        }
+      }
+    },
+    "paramStructure": "by-name",
+    "handler": "obtineJucatoriEchipa"
+  },
+  {
+    "name": "createPlayer",
+    "summary": "Add a new football player to a team.",
+    "description": "Creates a new football player record and associates them with an existing team. Use this when the user wants to add, register, or create a new player.",
+    "params": [
+      {
+        "name": "player",
+        "summary": "Player data",
+        "description": "An object with the new player's name, position, age, and teamId.",
+        "required": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "position": { "type": "string" },
+            "age": { "type": "integer" },
+            "teamId": { "type": "integer" }
+          },
+          "required": ["name", "position", "age", "teamId"]
+        }
+      }
+    ],
+    "result": {
+      "name": "createdPlayer",
+      "summary": "Created player",
+      "description": "The newly created player object including its auto-generated ID.",
+      "schema": {
+        "type": "object"
+      }
+    },
+    "paramStructure": "by-name",
+    "handler": "creeazaJucator"
+  }
+]
